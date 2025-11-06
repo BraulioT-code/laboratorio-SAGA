@@ -1,5 +1,8 @@
 package com.ecommerce.orderservice.dto;
 
+import lombok.Data;
+
+@Data
 public class CreateOrderRequest {
     private String productId;
     private int quantity;
