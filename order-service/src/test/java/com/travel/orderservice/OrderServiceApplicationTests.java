@@ -1,10 +1,10 @@
-package com.travel.laboratoriosaga;
+package com.travel.orderservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LaboratorioSagaApplicationTests {
+class OrderServiceApplicationTests {
 
     @Test
     void contextLoads() {

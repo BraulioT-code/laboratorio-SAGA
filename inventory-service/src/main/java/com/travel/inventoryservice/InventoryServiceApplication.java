@@ -1,13 +1,13 @@
-package com.travel.laboratoriosaga;
+package com.travel.inventoryservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LaboratorioSagaApplication {
+public class InventoryServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LaboratorioSagaApplication.class, args);
+        SpringApplication.run(InventoryServiceApplication.class, args);
     }
 
 }
