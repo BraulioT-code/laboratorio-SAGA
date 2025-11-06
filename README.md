@@ -1,7 +1,7 @@
 # 🧩 Laboratorio SAGA - E-commerce
 
-[cite_start]Proyecto desarrollado en **Spring Boot** con arquitectura de **microservicios** y el **patrón SAGA** para la gestión distribuida de transacciones[cite: 19].
-[cite_start]Cada microservicio se comunica de manera asíncrona mediante **RabbitMQ**[cite: 19].
+Proyecto desarrollado en **Spring Boot** con arquitectura de **microservicios** y el **patrón SAGA** para la gestión distribuida de transacciones.
+Cada microservicio se comunica de manera asíncrona mediante **RabbitMQ**.
 
 ---
 
@@ -75,11 +75,11 @@ El puerto y el comando de ejecución de cada microservicio son:
 
 ## 🎯 Flujos de la Saga Implementados
 
-[cite\_start]El sistema implementa el Patrón Saga por Orquestación para cubrir tres escenarios principales:
+El sistema implementa el Patrón Saga por Orquestación para cubrir tres escenarios principales:
 
-1.  [cite\_start]**Caso Exitoso (Transacción Completa):** Reserva OK $\rightarrow$ Pago OK $\rightarrow$ Orden `COMPLETED`.
-2.  [cite\_start]**Fallo en Inventario:** Sin stock $\rightarrow$ Orden `REJECTED`.
-3.  [cite\_start]**Fallo en Pago (Compensación):** Reserva OK $\rightarrow$ Pago Falla $\rightarrow$ Orden `CANCELLED` y se envía `ReleaseInventoryCommand`.
+1.  **Caso Exitoso (Transacción Completa):** Reserva OK $\rightarrow$ Pago OK $\rightarrow$ Orden `COMPLETED`.
+2.  **Fallo en Inventario:** Sin stock $\rightarrow$ Orden `REJECTED`.
+3.  **Fallo en Pago (Compensación):** Reserva OK $\rightarrow$ Pago Falla $\rightarrow$ Orden `CANCELLED` y se envía `ReleaseInventoryCommand`.
 
 -----
 
