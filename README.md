@@ -1,7 +1,7 @@
 # 🧩 Laboratorio SAGA - E-commerce
 
-Proyecto desarrollado en **Spring Boot** con arquitectura de **microservicios** y el **patrón SAGA** para la gestión distribuida de transacciones.
-Cada microservicio se comunica de manera asíncrona mediante **RabbitMQ**.
+[cite_start]Proyecto desarrollado en **Spring Boot** con arquitectura de **microservicios** y el **patrón SAGA** para la gestión distribuida de transacciones[cite: 19].
+[cite_start]Cada microservicio se comunica de manera asíncrona mediante **RabbitMQ**[cite: 19].
 
 ---
 
@@ -12,7 +12,7 @@ Cada microservicio se comunica de manera asíncrona mediante **RabbitMQ**.
 | 1️⃣ | Estructura inicial con Spring Boot y base H2 | ✅ Completado |
 | 2️⃣ | Integración de RabbitMQ real con Docker | ✅ Completado |
 | 3️⃣ | **Implementación del flujo Saga: Inventario (Avance y Rechazo)** | ✅ Completado |
-| 4️⃣ | **Implementación de Compensación (Pago y Rollback)** | ⏳ En progreso |
+| 4️⃣ | **Implementación de Compensación (Pago y Rollback de Inventario)** | ✅ Completado |
 | 5️⃣ | Pruebas integradas y despliegue | ⏳ Pendiente |
 
 ---
@@ -23,11 +23,11 @@ laboratorio-SAGA/
 
 ├── common-events/ # Librería compartida (eventos y comandos)
 
-├── order-service/ # Servicio de pedidos
+├── order-service/ # Servicio de pedidos (Orquestador de la Saga) 
 
-├── inventory-service/ # Servicio de inventario
+├── inventory-service/ # Servicio de inventario (Gestiona el inventario) 
 
-├── payment-service/ # Servicio de pagos
+├── payment-service/ # Servicio de pagos (Gestiona el procesamiento de pagos simulado) 
 
 ├── docker-compose.yml # Broker RabbitMQ en contenedor
 
@@ -45,6 +45,7 @@ laboratorio-SAGA/
 - **Maven**
 - **Docker / Docker Compose**
 
+
 ---
 
 ## 🐇 Configuración de RabbitMQ
@@ -53,24 +54,37 @@ Para levantar RabbitMQ en Docker:
 
 ```bash
 docker compose up -d
+````
 
-Interfaz de administración disponible en: 👉 http://localhost:15672
+Interfaz de administración disponible en:
+👉 http://localhost:15672
 
 Usuario: admin
 
 Contraseña: admin
-```
-Ejemplo: Order Service
-cd order-service ./mvnw spring-boot:run
 
-El puerto de cada uno:
+# Ejemplo: Microservicios
 
-order-service → 8081
+El puerto y el comando de ejecución de cada microservicio son:
 
-inventory-service → 8082
+| Microservicio | Puerto | Comando de Ejecución (desde la raíz) |
+|:--------------|:-------|:------------------------------------|
+| order-service | 8081 | `.\mvnw -pl order-service spring-boot:run` |
+| inventory-service | 8082 | `.\mvnw -pl inventory-service spring-boot:run` |
+| payment-service | 8083 | `.\mvnw -pl payment-service spring-boot:run` |
 
-payment-service → 8083
+## 🎯 Flujos de la Saga Implementados
 
-Laboratorio académico: Patrón Saga en microservicios con Spring Boot y RabbitMQ
+[cite\_start]El sistema implementa el Patrón Saga por Orquestación para cubrir tres escenarios principales:
+
+1.  [cite\_start]**Caso Exitoso (Transacción Completa):** Reserva OK $\rightarrow$ Pago OK $\rightarrow$ Orden `COMPLETED`.
+2.  [cite\_start]**Fallo en Inventario:** Sin stock $\rightarrow$ Orden `REJECTED`.
+3.  [cite\_start]**Fallo en Pago (Compensación):** Reserva OK $\rightarrow$ Pago Falla $\rightarrow$ Orden `CANCELLED` y se envía `ReleaseInventoryCommand`.
+
+-----
+
+Laboratorio académico: Patrón Saga en MicroServicios con Spring Boot y RabbitMQ
 
 Desarrollado por: Braulio Tovar
+
+-----
