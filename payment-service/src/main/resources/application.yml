@@ -2,13 +2,7 @@ spring:
   application:
     name: payment-service
 
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: admin
-    password: admin
-
-  datasource:
+    datasource:
     url: jdbc:postgresql://localhost:5432/paymentdb
     username: postgres
     password: postgres
@@ -21,6 +15,12 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin
 
 server:
   port: 8083

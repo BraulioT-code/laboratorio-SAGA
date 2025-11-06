@@ -8,9 +8,10 @@
         <version>3.5.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.travel</groupId>
-    <artifactId>Laboratorio-SAGA</artifactId>
+    <groupId>com.ecommerce</groupId>
+    <artifactId>laboratorio-saga</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>Laboratorio-SAGA</name>
     <description>Laboratorio-SAGA</description>
     <url/>
@@ -20,6 +21,13 @@
     <developers>
         <developer/>
     </developers>
+    <modules>
+        <module>common-events</module>
+        <module>order-service</module>
+        <module>inventory-service</module>
+        <module>payment-service</module>
+    </modules>
+
     <scm>
         <connection/>
         <developerConnection/>
