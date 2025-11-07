@@ -81,8 +81,6 @@ public class InventoryCommandListener {
             item.setAvailableQuantity(item.getAvailableQuantity() + command.getQuantity());
             inventoryRepository.save(item);
 
-            // Opcional: Emitir InventoryReleasedEvent para logging o notificación.
-
             System.out.println("Inventory Service: Compensación aplicada. Stock liberado (" + command.getQuantity() + ") para producto: " + command.getProductId());
         } else {
             System.err.println("Inventory Service: Error de compensación. Producto no encontrado para liberar stock.");
