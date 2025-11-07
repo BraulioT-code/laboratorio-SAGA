@@ -15,7 +15,7 @@ public class DataInitializer {
         return args -> {
             // Producto 1 con stock 10
             if (repository.findByProductId("PROD-1").isEmpty()) {
-                repository.save(new InventoryItem(UUID.randomUUID().toString(), "PROD-1", 10));
+                repository.save(new InventoryItem(UUID.randomUUID().toString(), "PROD-1", 30));
             }
             // Producto 2 sin stock
             if (repository.findByProductId("PROD-2").isEmpty()) {
@@ -23,4 +23,4 @@ public class DataInitializer {
             }
         };
     }
-}
+}30
