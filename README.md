@@ -13,7 +13,7 @@ Cada microservicio se comunica de manera asíncrona mediante **RabbitMQ**.
 | 2️⃣ | Integración de RabbitMQ real con Docker | ✅ Completado |
 | 3️⃣ | **Implementación del flujo Saga: Inventario (Avance y Rechazo)** | ✅ Completado |
 | 4️⃣ | **Implementación de Compensación (Pago y Rollback de Inventario)** | ✅ Completado |
-| 5️⃣ | Pruebas integradas y despliegue | ⏳ Pendiente |
+| 5️⃣ | Pruebas integradas (postman)| ✅ Completado |
 
 ---
 
@@ -85,6 +85,6 @@ El sistema implementa el Patrón Saga por Orquestación para cubrir tres escenar
 
 Laboratorio académico: Patrón Saga en MicroServicios con Spring Boot y RabbitMQ
 
-Desarrollado por: Braulio Tovar
+Desarrollado por: Braulio Tovar, Jonathan Vega
 
 -----
