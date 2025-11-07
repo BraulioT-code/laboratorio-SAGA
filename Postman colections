@@ -1,0 +1,83 @@
+{
+  "info": {
+    "name": "Laboratorio Saga - Casos de Prueba Postman",
+    "_postman_id": "b2b7b5b8-1d23-4b49-b431-6b6a2c9f76ff",
+    "description": "Colección de pruebas para los 3 flujos de la SAGA (COMPLETED, REJECTED, CANCELLED) con verificación de órdenes.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1- Flujo exitoso (COMPLETED)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"productId\": \"PROD-1\",\n    \"quantity\": 5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["orders"]
+        }
+      }
+    },
+    {
+      "name": "2- Fallo de inventario (REJECTED)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"productId\": \"PROD-2\",\n    \"quantity\": 2\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["orders"]
+        }
+      }
+    },
+    {
+      "name": "3-Fallo de pago (CANCELLED)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"productId\": \"PROD-1\",\n    \"quantity\": 15\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["orders"]
+        }
+      }
+    },
+    {
+      "name": "Ver todas las órdenes",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8081/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["orders"]
+        }
+      }
+    }
+  ]
+}
