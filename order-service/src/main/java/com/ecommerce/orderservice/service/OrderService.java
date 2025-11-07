@@ -11,6 +11,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -43,5 +45,13 @@ public class OrderService {
 
         System.out.println("Orden creada: " + savedOrder.getId() + ". Comando de reserva enviado.");
         return savedOrder;
+    }
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    public Optional<Order> getOrderById(String id) {
+        return orderRepository.findById(id);
     }
 }
