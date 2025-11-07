@@ -24,7 +24,6 @@ public class OrderSagaListener {
     private final RabbitTemplate rabbitTemplate;
 
     // Escucha eventos de RECHAZO de inventario
-    // USA LA CONSTANTE AQUÍ, NO EL STRING HARDCODEADO
     @RabbitListener(queues = OrderRabbitConfig.ORDER_INVENTORY_REJECTED_QUEUE)
     public void handleInventoryRejected(InventoryRejectedEvent event) {
         System.out.println("Recibido InventoryRejectedEvent para orden: " + event.getOrderId());
@@ -47,7 +46,6 @@ public class OrderSagaListener {
             System.out.println("Order Service: Orden " + order.getId() + " a PENDING_PAYMENT");
 
             // Generamos un monto para el pago. Usaremos la cantidad y un precio fijo.
-            // NOTA: Asumimos que tienes un campo totalAmount o lo calculas.
             BigDecimal amount = new BigDecimal(event.getQuantity() * 100);
 
             ProcessPaymentCommand command = new ProcessPaymentCommand(
@@ -69,7 +67,6 @@ public class OrderSagaListener {
             order.setStatus(String.valueOf(OrderStatus.COMPLETED)); // [cite: 238]
             orderRepository.save(order);
             System.out.println("Order Service: SAGA FINALIZADA con ÉXITO. Orden " + order.getId() + " completada.");
-            // Opcional: Aquí enviarías OrderCompletedEvent [cite: 239]
         });
     }
 
