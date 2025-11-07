@@ -13,15 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/orders")
-@RequiredArgsConstructor // <- Esto genera el constructor automáticamente
+@RequiredArgsConstructor 
 public class OrderController {
 
-    // Solo inyectamos el servicio, él se encarga del resto
     private final OrderService orderService;
 
-    @PostMapping
+   @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody CreateOrderRequest request) {
         Order order = orderService.createOrder(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(order);
+    }
+
+    @GetMapping
+    public List<Order> getAllOrders() {
+        return orderService.getAllOrders();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Order> getOrderById(@PathVariable String id) {
+        return orderService.getOrderById(id);
     }
 }
