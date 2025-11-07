@@ -11,6 +11,6 @@ public class InventoryListener {
     public void handleReserveInventory(ReserveInventoryCommand command) {
         System.out.println("📦 Recibido comando de reserva de inventario: "
                 + command.getProductId() + " x" + command.getQuantity());
-        // Aquí validarías el stock y enviarías un evento de confirmación o rechazo
+
     }
 }
