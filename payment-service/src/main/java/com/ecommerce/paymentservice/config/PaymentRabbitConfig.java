@@ -23,7 +23,4 @@ public class PaymentRabbitConfig {
     public Queue paymentCommandQueue() {
         return new Queue(PAYMENT_COMMAND_QUEUE, true);
     }
-
-    // NOTA: No es estrictamente necesario declarar la cola de REPLY aquí,
-    // pero declararla en el Order Service SÍ es obligatorio.
 }
